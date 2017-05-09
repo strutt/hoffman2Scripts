@@ -13,4 +13,4 @@ export OUTPUT_DIR=$outputDir
 cd $outputDir
 
 # Execute the script (relevent environmental variables are extracted from $GSE_TASK_ID
-$ANITA_UTIL_INSTALL_DIR/bin/Acclaim/drivers/filterDecimatedAcclaim
+$ANITA_UTIL_INSTALL_DIR/bin/Acclaim/drivers/filterDecimatedUniformMag
