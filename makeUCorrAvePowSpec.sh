@@ -8,4 +8,4 @@ echo The GSE_TASK_ID is $SGE_TASK_ID
 cd /u/home/s/strutt/hoffman2Scripts
 
 export UCORRELATOR_SPECAVG_DIR=~/project-bern/UCorrelatorSpecAveDir
-root -l -q makeUCorrAvePowSpec.C
+root -l -b -q makeUCorrAvePowSpec.C
