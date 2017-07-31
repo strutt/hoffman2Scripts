@@ -11,6 +11,4 @@ cd $outputDir
 if [[ $GSE_TASK_ID -gt 256 ]] && [[ $GSE_TASK_ID -lt 264 ]]; then
     echo "Not doing task ID "$GSE_TASK_ID 
     exit 1;
-else
-    exit 0;
 fi
