@@ -15,8 +15,9 @@ fi;
 scriptName=${args[0]}
 echo -n "I got scriptName ${scriptName} "
 #opts="-cwd -V -N ${scriptName} -l h_data=2G,h_rt=24:00:00,highp -m n"
-#opts="-cwd -V -N ${scriptName} -l h_data=2G,h_rt=36:00:00,highp -m n"
-opts="-cwd -V -N ${scriptName} -l h_data=2G,h_rt=24:00:00 -m n"
+#opts="-cwd -V -N ${scriptName} -l h_data=2G,h_rt=24:00:00 -m n"
+opts="-cwd -V -N ${scriptName} -l h_data=4G,h_rt=24:00:00,highp -m n"
+#opts="-cwd -V -N ${scriptName} -l h_data=1G,h_rt=1:00:00 -m n"
 
 if [ ${nArgs} -gt 1 ]; then # There extra arguments, which were JobIds
     echo "with extra arguments!"
@@ -49,22 +50,26 @@ else #otherwise make educated guess at job IDs.
 	startJobId=331
 	endJobId=354
 	increment=1;
+    elif [[ ${scriptName} == "newPayloadBlastCut.sh" ]]; then
+	startJobId=130
+	endJobId=430
+	increment=1;
     elif [[ ${scriptName} == "makeUCorrAvePowSpec.sh" || ${scriptName} == "rmsCacheSineSub"*".sh" ]]; then
 	startJobId=130
 	endJobId=439
 	increment=1
     else
 	#startJobId=1300
-	#endJobId=2569	
-	#startJobId=2640
-	#endJobId=4399
-	startJobId=4000
+	#endJobId=2569
+	startJobId=2640
 	endJobId=4399
+	#startJobId=4000
+	#endJobId=4399
 	
 	increment=1;	
     fi
     waitTime=10
-    echo "I guessed ${startJobId} ${endJobId}"
+    echo "I guessed ${startJobId} ${endJobId} with increment ${increment}"
     echo "Will submit qsub ${opts} -t ${startJobId}-${endJobId}:${increment} /u/home/s/strutt/hoffman2Scripts/${scriptName}"
     echo "in ${waitTime} seconds"
     sleep ${waitTime}
